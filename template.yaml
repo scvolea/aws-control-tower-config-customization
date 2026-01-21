@@ -9,7 +9,7 @@ Parameters:
   AccountSelectionMode:
     Description: Account selection mode - EXCLUSION (processes all accounts except those in ExcludedAccounts) or INCLUSION (processes only accounts in IncludedAccounts). Default is EXCLUSION for backward compatibility.
     Type: String
-    Default: EXCLUSION
+    Default: INCLUSION
     AllowedValues:
       - EXCLUSION
       - INCLUSION
@@ -24,7 +24,7 @@ Parameters:
   IncludedAccounts:
     Description: List of AWS account IDs to include when AccountSelectionMode is INCLUSION. Only used when AccountSelectionMode is INCLUSION.
     Type: String
-    Default: "['111111111111', '222222222222', '333333333333']"
+    Default: "['855703743734', '706179786846', '843132292734','905992893969']"
     MinLength: 2
     MaxLength: 4096
 
@@ -277,7 +277,7 @@ Resources:
         "eventName": ["UpdateLandingZone", "CreateManagedAccount", "UpdateManagedAccount", "ResetLandingZone"]
         }
         }'
-      Name: !GetAtt SQSConfigRecorder.QueueName
+      Name: ct-config-recorder-trigger
       State: ENABLED
       Targets:
         - Arn:
